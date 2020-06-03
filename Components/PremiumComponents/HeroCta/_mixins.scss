@@ -1,0 +1,27 @@
+@mixin align-image($device-name, $horizontal-list: left center right, $vertical-list: top center bottom) {
+  @each $horizontal in $horizontal-list {
+    @each $vertical in $vertical-list {
+      .#{$device-name}HorizontalAlign--#{$horizontal}.#{$device-name}VerticalAlign--#{$vertical} {
+        object-position: $horizontal $vertical;
+      }
+    }
+  }
+}
+
+@mixin align-text($device-name, $horizontal-list: left center right) {
+  @each $horizontal in $horizontal-list {
+      .#{$device-name}TextAlign--#{$horizontal} {
+        text-align: $horizontal;
+      }
+  }
+}
+
+// @mixin w-($width){
+//   @for $i from 1 through $width {
+//     #{'p.w-' + $i} {
+//       width: #{$i + '%'};
+//       margin-left: auto;
+//       margin-right: auto;
+//     }
+//   }
+// }

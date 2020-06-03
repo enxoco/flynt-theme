@@ -1,0 +1,16 @@
+<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-hero-cta">
+  <div class="container centerMaxWidthContainer
+    {{ options.alignText.mobile }}
+    {{ options.alignText.desktop }}">
+    {% if contentHtml %}
+      {{ contentHtml }}
+    {% endif %}
+    {% if buttonLink.url %}
+      <p>
+        <a href="{{ buttonLink.url }}"{% if buttonLink.target %} target="{{ buttonLink.target }}" rel="noreferrer noopener"{% endif %} class="button">
+          {{ buttonLink.title|e }}
+        </a>
+      </p>
+    {% endif %}
+  </div>
+</div>

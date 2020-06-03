@@ -613,7 +613,9 @@ select {
 .mainContent {
   flex: 1 0 auto;
 }
-
+.flex {
+  display: flex;
+}
 .flyntComponent {
   position: relative;
 }

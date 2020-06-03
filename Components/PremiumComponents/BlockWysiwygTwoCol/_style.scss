@@ -1,0 +1,17 @@
+[is='flynt-block-wysiwyg-two-col'] {
+  .content {
+    @include reset-content-margins;
+
+    max-width: 800px;
+    text-align: left;
+
+    @media (min-width: $content-max-width + 2 * $container-padding-mobile) {
+
+      width: 50%;
+    }
+  }
+  .centerMaxWidthContainer {
+    display: flex;
+    justify-content: space-between;
+  }
+}

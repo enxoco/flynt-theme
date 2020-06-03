@@ -1,0 +1,24 @@
+<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-block-wysiwyg-two-col">
+  <div class="container centerMaxWidthContainer">
+    {% if preContentHtmlLeft %}
+    <div class="preContentLeft">
+      <div>
+        {{ preContentHtmlLeft }}
+      </div>
+      <div class="content">
+          {{ contentHtmlLeft }}
+        </div>
+    </div>
+    {% endif %}
+    {% if preContentHtmlRight %}
+    <div class="preContentRight">
+      <div>
+        {{ preContentHtmlRight }}
+      </div>
+      <div class="content">
+          {{ contentHtmlRight }}
+        </div>
+    </div>
+    {% endif %}
+  </div>
+</div>

@@ -1,17 +1,15 @@
 @import 'mixins';
 
-[is='flynt-list-images'] {
-
+[is='flynt-hero-image-cta'] {
   @include align-image('mobile');
-
+  @include align-text('mobile');
 
   align-items: left;
   display: flex;
   justify-content: left;
-
-
-  & .container {
-    width: 90%;
+  
+  .center {
+    display: flex;
     margin-left: auto;
     margin-right: auto;
   }
@@ -20,25 +18,30 @@
 
     position: relative;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
+
+
 
     @media (min-width: $breakpoint-tablet) {
-      @include center($container-max-width, $padding: 0);
+      @include center(100%, $padding: 0);
+      .content-html.boxPadding.mobileTextAlign--left.desktopTextAlign--left {
+        left: 100px;
+        position: absolute;
+        width: 50%;
+    }
     }
 
     .content-picture {
-      left: $container-padding-mobile;
-      right: $container-padding-mobile;
+      left: 0;
+      right: 0;
 
       @media (min-width: $breakpoint-tablet) {
-        left: $container-padding-tablet;
-        right: $container-padding-tablet;
+        left: 0;
+        right: 0;
       }
 
       @media (min-width: $breakpoint-desktop) {
-        left: $container-padding-desktop;
-        right: $container-padding-desktop;
+        left: 0;
+        right: 0;
       }
     }
   }
@@ -46,20 +49,19 @@
   &,
   .content,
   .content-wrapper {
-    min-height: 220px;
-    
+    min-height: 420px;
   }
 
   @media (min-width: $breakpoint-tablet) {
     &,
     .content,
     .content-wrapper {
-      min-height: 340px;
+      min-height: 540px;
     }
   }
 
   .content {
-    align-content: center;
+    align-content: left;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -70,30 +72,17 @@
     @media (min-width: $breakpoint-desktop) {
       padding: 50px 0;
     }
-    & .flynt-list-images-col {
-      margin-left: 3rem;
-      margin-right: 3rem;
-      text-align: center;
-    }
 
     &-wrapper {
       align-content: center;
-      align-items: center;
-      color: white;
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
       flex-shrink: 0;
       height: 100%;
       justify-content: center;
       justify-items: center;
-      max-width: 100%;
+      max-width: $content-max-width;
       width: 100%;
-      flex-wrap: wrap;
-    }
-    @media (min-width: $breakpoint-desktop) {
-      &-wrapper {
-        flex-wrap: nowrap;
-      }
     }
 
     &-html {
@@ -102,9 +91,6 @@
       position: relative;
       text-align: center;
       width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
 
       &:not([class*='theme']) {
         color: #fff;
@@ -141,6 +127,8 @@
 
   @media (min-width: $breakpoint-tablet) {
     @include align-image('desktop');
+    @include align-text('desktop');
+
   }
 
   @media (max-width: $content-max-width + 29px) {
@@ -149,3 +137,4 @@
     }
   }
 }
+

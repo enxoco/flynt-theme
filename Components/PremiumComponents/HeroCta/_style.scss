@@ -1,0 +1,28 @@
+@import 'mixins';
+
+[is='flynt-hero-cta'] {
+  @include align-image('mobile');
+  @include align-text('mobile');
+  .flex {
+    flex-wrap: wrap;
+    li {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  .container {
+    @include reset-content-margins;
+
+  }
+
+  @media (max-width: $content-max-width - 1px) {
+    br {
+      content: '\00a0';
+    }
+  }
+  @media (min-width: $breakpoint-tablet) {
+    @include align-image('desktop');
+    @include align-text('desktop');
+    // @include w-(100)
+  }
+}

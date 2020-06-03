@@ -1,4 +1,4 @@
-const host = 'https://timbertest.test'
+const host = 'https://wp.enxo.co'
 const dest = './dist'
 
 function getCopyConfig (source) {
