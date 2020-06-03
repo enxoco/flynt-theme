@@ -1,0 +1,23 @@
+<div class="flyntComponent componentSpacing {{ options.theme }}" is="flynt-block-wysiwyg">
+	<div class="container {{ options.fullWidth ? 'marginLeft-50 marginRight-50' : 'centerMaxWidthContainer' }}">
+        <div class="content content--{{ textAlignment }} {{ options.fullWidth ? '' : 'centerContentMaxWidth' }}">
+			<div class="slider">
+	  			<div class="arrows">
+	    			<a class="previous"><i data-feather="chevron-left"></i></a>
+	    			<a class="next"><i data-feather="chevron-right"></i></a>
+	  			</div>
+	  			<div class="slides">
+        		{% for item in items %}
+					<div class="slide {{ loop.first ? 'active' : ''}}" style="background-color: #324259;" data-icon="">
+						<p class="text-white">{{ item.quote | excerpt(30) }}</p>
+						<p class="text-white"><small><em>{{ item.qAuthor }}</em></small></p>
+						<a target="_blank" class="button" href="/{{ item.slug }}">Read More</a>
+            		</div>
+        		{% endfor %}
+				</div>
+				<div class="bullets">
+				</div>
+			</div>
+        </div>
+    </div>
+</div>

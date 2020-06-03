@@ -1,0 +1,56 @@
+[is='flynt-block-image-text'] {
+  .container {
+    @include center(500px + 2 * $container-padding-mobile);
+  }
+
+  .box-inner {
+    @include reset-content-margins('top');
+  }
+
+  @media (max-width: $breakpoint-tablet-horizontal - 1) {
+    margin: $component-spacing-tablet 0;
+  }
+
+  img.halfWidth {
+    max-width: 50%;
+  }
+
+  @media (min-width: $breakpoint-tablet-horizontal) {
+    .container {
+      @include center(1400px + 2 * $container-padding-tablet, $container-padding-tablet);
+    }
+
+    .box {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      margin: 0 $container-padding-tablet * -1;
+      margin-bottom: 100px;
+
+      &-inner {
+        @include reset-content-margins('both');
+
+        padding: 0 $container-padding-tablet;
+        width: 50%;
+        &--image.halfWidth {
+          max-width: 25%;
+        }
+      }
+      
+
+      &--imageRight {
+        flex-direction: row;
+      }
+
+      &--imageLeft {
+        flex-direction: row-reverse;
+      }
+    }
+
+    .figure-caption {
+      &-caption {
+        position: absolute;
+      }
+    }
+  }
+}

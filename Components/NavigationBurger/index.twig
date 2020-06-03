@@ -1,0 +1,25 @@
+
+{% if post.title == 'Home' %}
+<nav is="flynt-navigation-burger" class="flyntComponent">
+  <div class="wrapper bg-dark">
+    <div class="container width-30" style="justify-content:center;">
+      <div class="left" style="margin-top:20px">
+        <p><span style="background:#EB703B;padding:20px 5px;">NEWS:</span> <a href="/iwa-formally-announces-operations/" style="color:white;text-decoration:none;">IWA formally announces operations.</a></p>
+      </div>
+
+    </div>
+  </div>
+</nav>
+{% endif %}
+<nav is="flynt-navigation-burger" class="flyntComponent">
+  <div class="container centerMaxWidthContainer">
+    {% include 'Partials/_logo.twig' with { 'logo': cLogo, 'site': site } only %}
+    {% if menu %}
+      {% include 'Partials/_hamburger.twig' with { 'aria': aria } only %}
+    {% endif %}
+  </div>
+  {% if menu %}
+    {% include 'Partials/_menu.twig' with { 'items': menu.items } only %}
+  {% endif %}
+
+</nav>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html class="html {{ body_class }}" lang="{{ site.language }}">
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-168213987-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-168213987-1');
+  </script>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.title }} {{ __('Feed', 'flynt') }}" href="{{ site.rss2 | e('esc_url') }}">
+    {{ function('wp_head') }}
+    <style>
+.bx-wrapper {
+  width: 100%;
+  border: 10px solid white;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+.bx-wrapper .bx-viewport {
+  height: 189px !important;
+}
+.bx-wrapper li {
+  margin-top: -16px !important;
+}
+.bx-wrapper li img {
+  height: 189px;
+  width: 400px;
+  object-fit: contain;
+}
+
+
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+  </head>
+  <body>
+    {% block layout %}
+      <div class="pageWrapper">
+        <header class="mainHeader">
+          {% block header %}
+            {{ renderComponent('NavigationMain') }}
+            {{ renderComponent('NavigationBurger') }}
+          {% endblock %}
+        </header>
+        <main class="mainContent">
+          {% if function('post_password_required') %}
+            {{ function('get_the_password_form') }}
+          {% else %}
+            {% block content %}
+              No <code>{{ '{% block content %}' }}</code> defined for this template.
+            {% endblock %}
+          {% endif %}
+        </main>
+        <footer class="mainFooter">
+          {% block footer %}
+            {{ renderComponent('NavigationFooter') }}
+          {% endblock %}
+        </footer>
+      </div>
+    {% endblock %}
+    <div class="wpFooter">
+      {{ function('wp_footer') }}
+    </div>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.1.1/jquery.bxslider.min.js"></script>
+    <script>
+jQuery('.bxslider').bxSlider({
+    minSlides: 1,
+    maxSlides: 5,
+    slideWidth: 500,
+    slideMargin: 0,
+    ticker: true,
+    speed: 30000
+});
+
+var $slider = jQuery(".slider"), $bullets = jQuery(".bullets");
+		function calculateHeight(){
+			var height = jQuery(".slide.active").outerHeight();
+			$slider.height(height);
+		}
+
+		jQuery(window).resize(function() {
+			calculateHeight();
+		    clearTimeout($.data(this, 'resizeTimer'));
+		});
+		
+		function resetSlides(){
+			jQuery(".slide.inactive").removeClass("inactiveRight").removeClass("inactiveLeft");
+		}
+
+		function gotoSlide($activeSlide, $slide, className){
+			 $activeSlide.removeClass("active").addClass("inactive "+className);
+			 $slide.removeClass("inactive").addClass("active");
+			 calculateHeight();
+			 resetBullets();
+			 setTimeout(resetSlides, 300);
+		}
+
+		jQuery(".next").on("click", function(){
+			 var $activeSlide = jQuery(".slide.active"),
+				 $nextSlide = $activeSlide.next(".slide").length != 0 ? $activeSlide.next(".slide") : jQuery(".slide:first-child");
+				 console.log($nextSlide);
+				 gotoSlide($activeSlide, $nextSlide, "inactiveLeft");
+		});
+		jQuery(".previous").on("click",  function(){
+			 var $activeSlide = jQuery(".slide.active"),
+				 $prevSlide = $activeSlide.prev(".slide").length != 0 ? $activeSlide.prev(".slide") : jQuery(".slide:last-child");
+
+				 gotoSlide($activeSlide, $prevSlide, "inactiveRight");
+		});
+		jQuery(document).on("click", ".bullet", function(){
+			if(jQuery(this).hasClass("active")){
+				return;
+			}
+			var $activeSlide = jQuery(".slide.active");
+			var currentIndex = $activeSlide.index();
+			var targetIndex = jQuery(this).index();
+			console.log(currentIndex, targetIndex);
+			var $theSlide = jQuery(".slide:nth-child("+(targetIndex+1)+")");
+			gotoSlide($activeSlide, $theSlide, currentIndex > targetIndex ? "inactiveRight" : "inactiveLeft");
+		})
+		function addBullets(){
+			var total = jQuery(".slide").length, index = jQuery(".slide.active").index();
+			for (var i=0; i < total; i++){
+				var $bullet = jQuery("<div>").addClass("bullet");
+				if(i==index){
+					$bullet.addClass("active");	
+				}
+				$bullets.append($bullet);
+			}
+		}
+		function resetBullets(){
+			jQuery(".bullet.active").removeClass("active");
+			var index = jQuery(".slide.active").index()+1;
+			console.log(index);
+			jQuery(".bullet:nth-child("+index+")").addClass("active");
+		}
+		addBullets();
+		calculateHeight();	
+				jQuery(".next").on("click", function(){
+			 var $activeSlide = jQuery(".slide.active"),
+				 $nextSlide = $activeSlide.next(".slide").length != 0 ? $activeSlide.next(".slide") : jQuery(".slide:first-child");
+				 console.log($nextSlide);
+				 gotoSlide($activeSlide, $nextSlide, "inactiveLeft");
+		});
+</script>
+  <script src="https://unpkg.com/swiper/js/swiper.min.js" ></script>
+  <script>
+  var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 3,
+      spaceBetween: 30,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+        navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+      var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 'auto',
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      loop: true,
+        navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+	</script>
+  </body>
+</html>

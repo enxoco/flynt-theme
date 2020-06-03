@@ -1,0 +1,139 @@
+
+<style>
+{# input#field_xu8hk {
+    width: 320px;
+    float: right;
+}
+.frm_forms {
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 768px){
+    .frm_inline_form .frm_form_field.form-field {
+    display: flex;
+  }
+}
+@media (min-width: 768px){
+  .frm_forms {
+    margin-left: 50px;
+  }
+} #}
+.with_frm_style .vertical_radio .frm_checkbox label, .with_frm_style .vertical_radio .frm_radio label {
+    display: block;
+    padding-left: 20px;
+    text-indent: -20px;
+}
+.frm_style_formidable-style.with_frm_style .frm_radio label, .frm_style_formidable-style.with_frm_style .frm_checkbox label {
+    font-family: "Lucida Grande","Lucida Sans Unicode",Tahoma,sans-serif;
+    font-size: 13px;
+    color: #444444;
+    font-weight: normal;
+}
+</style>
+
+
+<div class="flyntComponent componentSpacing themeDark" is="flynt-hero-cta" style="padding:50px 0 0 0;">
+  <div class="container centerMaxWidthContainer mobileTextAlign--center desktopTextAlign--center">
+    <h1>STAY UPDATED</h1>
+    <p>Receive our newsletter and periodic updates on items of interest</p>
+    <div class="newsletter-form">
+    <a class="button" id="openNewsLetterModalFooter">SUBSCRIBE TODAY <i data-feather="chevrons-right" style="color: white;"></i></a>
+    </div>
+    
+  </div>
+  <nav is="flynt-navigation-footer" class="flyntComponent themeDark bg-dark">
+      <div class="wrapper themeDark">
+      <div class="container centerMaxWidthContainer social-icons" style="padding-bottom:0px;">
+
+
+                      <p class=" text-left">Copyright © 2020 InterWork Alliance, Inc. All rights reserved. InterWork Alliance™, InterWork™, InterWork Alliance logo are trademarks of InterWork Alliance, Inc.</p>
+
+          <a class="logo" href="{{ site.link }}">
+              <img class="logo-image" src="/wp-content/uploads/2020/05/iwa-footer-logo.svg" alt="{{ logo.alt }}">
+            </a>
+          </div>
+       <div class="container centerMaxWidthContainer social-icons flex" style="align-items:center;">
+
+        <ul class="menu social-icons">
+          <li class="menu-item {{ item.current ? 'menu-item--current' }}">
+            Follow Us
+          </li>
+                  <li class="menu-item {{ item.current ? 'menu-item--current' }}">
+                  <a href="https://twitter.com/IntWorkAll">
+            <img class="social-icon" src="/wp-content/uploads/2020/05/twitter-footer.svg" />
+            </a>
+          </li>
+        
+                  <li class="menu-item {{ item.current ? 'menu-item--current' }}">
+                  <a href="https://www.linkedin.com/company/interwork-alliance/?viewAsMember=true">
+            <img class="social-icon" src="/wp-content/uploads/2020/05/linkedin-footer.svg" />
+            </a>
+          </li>
+                          <li class="menu-item {{ item.current ? 'menu-item--current' }}">
+                          <a href="https://www.facebook.com/pg/InterWork-Alliance-107466464323698/about/?ref=page_internal">
+            <img class="social-icon" src="/wp-content/uploads/2020/05/facebook-footer.svg" />
+            </a>
+          </li>{#
+                          <li class="menu-item {{ item.current ? 'menu-item--current' }}">
+            <img class="social-icon" src="/wp-content/uploads/2020/05/youtube-footer.svg" />
+          </li>
+          #}
+        </ul>
+        <div class="content-right flex">
+          <a href="#">Terms of Use</a>
+          <a href="/privacy-policy" class="marginLeft-10" target="_blank">Privacy Policy</a>
+        </div>
+          </div>
+      </div>
+    </nav>
+    
+</div>
+{#
+<div class="flyntComponent themeLight bgContrast" is="flynt-navigation-footer">
+  <div class="container centerMaxWidthContainer">
+      <div class="content-right">
+          <a href="#">Terms of Use</a>
+          <a href="#">Privacy Policy</a>
+        </div>
+    <div class="content-left">
+  <p class="width-50">Copyright © 2020 InterWork Alliance, Inc. All rights reserved. InterWork Alliance™, InterWork™, InterWork Alliance logo are trademarks of InterWork Alliance, Inc.</p>
+  </div>
+
+  </div>
+</div>#}
+  {{ function('get_search_form') }}
+
+<!-- The Modal -->
+<div id="newsletterModal" class="overlay" style="background:#324259;overflow-y:scroll;">
+  <div class="overlay-content" style="top:10px;">
+    <a href="javascript:void(0)" class="closebtn" href="#" onclick="closeNewsletterNav()">&times;</a>
+
+  <div class="container width-50" style="margin-right:auto;margin-left:auto;">
+
+    <h1 class="text-white">STAY UPDATED</h1>
+    <p class="text-white">Receive our newsletter and periodic updates on items of interest</p>
+    {% filter shortcodes %}
+      [formidable id=13]
+    {% endfilter %}
+    </div>
+  </div>
+</div>
+<script>
+var modal = document.getElementById("newsletterModal");
+
+var span = document.getElementsByClassName("close")[0];
+
+document.getElementById("openNewsLetterModalFooter").onclick = function() {
+  document.getElementById("newsletterModal").style.height = "100%";
+}
+document.getElementById("openNewsLetterModalBody").onclick = function() {
+  document.getElementById("newsletterModal").style.height = "100%";
+}
+function closeNewsletterNav() {
+    document.getElementById("newsletterModal").style.height = "0%";
+
+}
+
+
+
+</script>';
