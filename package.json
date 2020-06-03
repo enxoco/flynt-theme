@@ -10,7 +10,7 @@
     "clean": "rimraf ./dist",
     "start": "run-s --silent checkVersion clean watch",
     "watch": "node bs-server.js",
-    "build": "run-s --silent clean build:production build:rev",
+    "build": "run-s --silent checkVersion clean build:production build:rev",
     "build:production": "cross-env NODE_ENV=production webpack --progress --display=minimal",
     "build:rev": "gulp rev",
     "lint": "run-p --silent lint:*",
